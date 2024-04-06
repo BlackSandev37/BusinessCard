@@ -1,0 +1,247 @@
+@import url(https://fonts.googleapis.com/css?family=Ubuntu:300);
+@import url(https://fonts.googleapis.com/css?family=Oswald:300);
+:root{
+    --pop-color: #fff;
+    --stroke-color: none;
+
+}
+*{
+    padding: 0;
+    margin: 0;
+}
+body {
+    background-color: #1a1a1a;
+}
+.container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card{
+    position: relative;
+    display: grid;
+    grid-template-rows: 50px auto;
+    min-height: 60vh;
+    max-height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-width: 400px;
+    min-width: 400px;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.4);
+    text-align: center;
+}
+.card::-webkit-scrollbar {
+    display: none;
+}
+.decoracion{
+    height: 0px;
+    z-index: 0;
+}
+.top-decoration {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    pointer-events: none;
+}
+.mid-decoration{
+  position: absolute;
+  top: 250px;
+  left: 300px;
+  width: 100%;
+  transition: 0.5s ease;
+  pointer-events: none;
+}
+button{
+  all: unset;
+  position: absolute;
+  top: 340px;
+  left: 355px;
+  display: inline-block;
+  cursor: pointer;
+  transition: 1s ease;
+}
+.animate {
+  top: 250px;
+  left: 240px;
+  width: 100%;
+}
+button:hover{
+  animation: rotar 1s alternate;
+}
+@keyframes rotar{
+    0%{transform: rotate(0deg);}
+    20%{transform: rotate(10deg);}
+    40%{transform: rotate(-15deg);}
+    60%{transform: rotate(15deg);}
+    80%{transform: rotate(-10deg);}
+    100%{transform: rotate(0deg);}
+
+}
+.foto{
+    position: absolute;
+    justify-self: right;
+    top: 80px;
+    background-color: #fff;
+    right: 20px;
+    text-align: center;
+    border-radius: 360px;
+    width: 160px;
+    margin: 0 -10px 20px;
+    display: flex;
+    height: 160px;
+    align-items: center;
+    clip-path: circle();
+}
+.foto img{
+    position: relative;
+    scale: 1.3;
+    min-height: 160px;
+    min-width: 160px;
+    bottom: 20px;
+}
+.contenido{
+    display: grid;
+    grid-template-columns: auto auto;
+    min-height: 400px;
+}
+.contact-info{
+    display: block;
+    width: 100%;
+    height: 100%;            
+}
+.pop{
+    background-color:#1B4782;
+    clip-path: circle(35px);
+    scale: 0.8;
+    transition: 0.5s linear;
+}
+.pop:hover{
+    background-color: #fff;
+    scale: 1;
+}
+.pop svg{
+    display: grid;
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+    margin: 0px 15px;
+}
+.pop svg:hover{
+    animation: rotar linear 0.8s;
+    --pop-color: hsl(0, 0%, 0%);
+}
+.pop a{
+    width: 100%;
+    height: 100%;
+}
+.id{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    width: 300px;
+    font-family: "Oswald";
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+.card h1 {
+    margin: 0 10px;
+    width: 100%;
+    font-size: 25px;
+    text-align: start;
+    color: #333;
+}
+.card #profesion{
+    width: 100%;
+    margin: 0 10px;
+    font-size: small;
+    text-align: start;
+}
+.extra-info{
+    display: grid;
+    overflow: hidden;
+    background-color:#00A8CC;
+    border-radius: 30px; 
+    grid-template-rows: 90px 90px;
+    justify-items: center;
+    color: #fefefe;
+    font-family: "Oswald";  
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.75em;
+    line-height: 2;
+    font-weight: 600;
+    text-rendering: optimizeLegibility;    
+    margin: 10px;
+    width: 380px;
+    max-height: 180px;
+    height: 180px;
+    box-shadow: 0 5px 8px rgb(39, 54, 74);
+}
+#info1{
+    position: relative;
+    color: #000;
+    left: 30px;
+    width: 80%;
+    font-weight: 600;
+    text-align: justify;
+}
+#info2{
+    position: relative;
+    bottom: 10px;
+    font-weight: bold;
+}
+.extra-info #muelita{
+    position: absolute;
+    width: 60px;
+    height: 80px;
+    align-self: flex-start;
+    justify-self: start;
+}
+.extra-info p{
+    display: flex;
+    margin: 0 10px;
+    align-items: center;
+}
+.direccion svg{
+    display: flex;
+    margin-top: 30px;
+    width: 60px;
+    height: 60px;
+}
+.extra-info a{
+    width: 100px;
+    height: 100px;
+}
+.foot{
+    display: grid;
+    height: 50px;
+    background-color: #1B4782;
+    align-items: center;
+    color: #fefefe;
+    font-family: "Ubuntu";
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.5em;
+    line-height: 2;
+    font-weight: 300;
+    text-rendering: optimizeLegibility;
+}
+@media screen and (max-width: 600px){
+    .card{
+        min-width: 200px;
+        height: 80vh;
+    }
+}
+@media screen and (max-width: 400px){
+    .card{
+        min-width: 400px;
+        height: 100vh;
+        scale: 0.75;
+    }
+
+}
