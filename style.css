@@ -1,9 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Ubuntu:300);
 @import url(https://fonts.googleapis.com/css?family=Oswald:300);
+
 :root{
     --pop-color: #fff;
     --stroke-color: none;
-
 }
 *{
     padding: 0;
@@ -11,12 +11,14 @@
 }
 body {
     background-color: #1a1a1a;
+    justify-content: center;
+    align-content: center;
 }
 .container{
     width: 100%;
     display: flex;
-    justify-content: center;
     align-content: center;
+    justify-content: center;
 }
 .card{
     position: relative;
@@ -249,5 +251,4 @@ button:hover{
         height: 100vh;
         scale: 0.75;
     }
-
 }
