@@ -16,7 +16,7 @@ body {
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-content: center;
 }
 .card{
     position: relative;
@@ -52,8 +52,15 @@ body {
   top: 250px;
   left: 300px;
   width: 100%;
-  transition: 0.5s ease;
+  transition: 0.8s ease;
   pointer-events: none;
+}
+.move{
+    animation: move 1500ms ease;
+}
+@keyframes move{
+    0%, 50%, 100%{left: 300px;}
+    25%, 75%{left: 285px;}
 }
 button{
   all: unset;
@@ -79,7 +86,6 @@ button:hover{
     60%{transform: rotate(15deg);}
     80%{transform: rotate(-10deg);}
     100%{transform: rotate(0deg);}
-
 }
 .foto{
     position: absolute;

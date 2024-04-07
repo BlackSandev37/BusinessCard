@@ -3,22 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tarjeta de Presentación</title>
     <link rel="stylesheet" href="./style.css">
-  
-    <script>
-         // Obtener referencia al botón y al contenedor de .mid-decoration
-        var shareButton = document.getElementById("shareButton");
-        var midDecorationContainer = document.querySelector(".mid-decoration-container");
 
-        // Función para cambiar el estado del botón cuando se hace clic
-        function compartir() {
-            // Alternar la clase 'active' del botón
-            shareButton.classList.toggle("active");
-            // Alternar la clase 'active' del contenedor de .mid-decoration
-            midDecorationContainer.classList.toggle("active");
-        }
-    </script>
+    <title>Tarjeta de Presentación</title>
 </head>
 
 <body>
@@ -133,6 +120,28 @@
             decoracion.classList.remove('animate');
         }
     }
+</script>
+
+<script>
+    // Función para iniciar la animación
+    function iniciarAnimacion() {
+        var decoracion = document.querySelector('.mid-decoration');
+        decoracion.classList.add('move');
+        setTimeout(function() {
+            decoracion.classList.remove('move');
+        }, 1500); // Duración de la animación (en milisegundos)
+    }
+
+    // Función para verificar si el mouse está sobre el elemento
+    function verificarHover() {
+        var decoracion = document.querySelector('button');
+        if (!decoracion.matches(':hover')) { // Si no hay hover
+            iniciarAnimacion(); // Iniciar la animación
+        }
+    }
+
+    // Ejecutar iniciarAnimacion cada 5 segundos
+    setInterval(verificarHover, 5000);
 </script>
 </body>
 </html>
