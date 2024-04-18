@@ -1,3 +1,41 @@
+// Función para activar los enlaces en el segundo clic
+function activarEnlacesSegundoClic() {
+    // Seleccionar todos los botones
+    const botones = document.querySelectorAll('button');
+
+    // Iterar sobre cada botón
+    botones.forEach(boton => {
+        let contador = 0;
+
+        // Agregar evento de clic a cada botón
+        boton.addEventListener('click', function() {
+            contador++;
+
+            // Si es el segundo clic, activar el enlace
+            if (contador == 2) {
+                // Obtener el enlace del botón
+                const enlace = boton.dataset.enlace;
+                const funcion = boton.dataset.funcion;
+                const target = boton.dataset.blank ? '_blank' : '_self';
+
+                    // Redirigir a la URL del enlace
+                    if (enlace) {
+                        window.open(enlace, target);
+                        contador = 0;
+                    }
+                    // Llamar a la función
+                    if (funcion && typeof window[funcion] == 'function') {
+                        window[funcion]();
+                        contador = 0;
+                    }
+            }
+        });
+    });
+}
+
+// Llamar a la función para activar los enlaces en el segundo clic
+activarEnlacesSegundoClic();
+
 function compartir() {
     if (navigator.share) {
         navigator.share({
@@ -64,18 +102,17 @@ setInterval(verirHover, 3000);
 
 function activarAnimaciones(element) {
     // Obtener los elementos y y z
-    var elementoY = element.querySelector('#Layer1');
-    var elementoZ = element.querySelector('#Layer2');
+    var elementoY = element.querySelector('.Layer1');
+    var elementoZ = element.querySelector('.Layer2');
     // Agregar clase para activar animación en y
-    element = [elementoY.classList.add('salto'),
-    elementoZ.classList.add('sombra')];
+    elementoY.classList.add('salto');
+    elementoZ.classList.add('sombra');
     
-
     // Agregar clase para activar animación en z después de un retraso
-    setTimeout(function() {
-        element = [elementoY.classList.remove('salto'),
-        elementoZ.classList.remove('sombra')];
-    }, 2000); // Retraso de 1000 milisegundos (1 segundo)
+    timeoutID = setTimeout(function() {
+        elementoY.classList.remove('salto');
+        elementoZ.classList.remove('sombra');
+    }, 1500); // Retraso de 1000 milisegundos (1 segundo)
   }
 
   function verifiHover() {
@@ -89,3 +126,11 @@ function activarAnimaciones(element) {
 
 // Ejecutar verificarHover cada 2 segundos
 setInterval(verifiHover, 2000);
+
+function textColoring(){
+    document.querySelector('.foot span');
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    activarEnlacesSegundoClic();
+});
