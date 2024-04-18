@@ -14,7 +14,6 @@ body {
 }
 
 .container{
-    position: absolute;
     width: 100%;
     height: 100%;
     display: flex;
@@ -27,40 +26,48 @@ body {
 .container::before{
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
-    background-image: inherit; /* Hereda la imagen de fondo del elemento .card */
-    background-size: inherit; /* Hereda el tamaño del fondo del elemento .card */
-    background-position: inherit; /* Hereda la posición del fondo del elemento .card */
-    background-repeat: inherit; /* Hereda la repetición del fondo del elemento .card */
-    filter: blur(10px); /* Aplica el desenfoque al fondo */
-    z-index: 0; /* Coloca la capa detrás del contenido de la tarjeta */
+    background-image: inherit;
+    background-size: inherit;
+    background-position: inherit;
+    filter: blur(5px);
+    z-index: 0; 
 }
 .card{
-    position: relative;
+    position: absolute;
     display: grid;
-    grid-template-rows: 50px auto;
+    grid-template-rows: 50px auto auto;
     min-height: 60vh;
     max-height: 100vh;
     overflow-y: auto;
     overflow-x: hidden;
-    max-width: 400px;
+    width: 400px;
     background-color: #fff;
     border-radius: 20px;
     box-shadow: 0 5px 8px rgba(0, 0, 0, 0.4);
     text-align: center;
 }
+.card::before{
+    content: "";
+    position: absolute;
+    display: flex;
+    width: 100%;
+    height: 90vh;
+    background-image: url(./BlueLogo.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.2;
+    z-index: -1;
+}
 .card::-webkit-scrollbar {
     display: none;
 }
 .decoracion{
-    height: 0px;
     z-index: 0;
 }
 .top-decoration {
-    position: relative;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -83,20 +90,27 @@ body {
 }
 button{
   all: unset;
-  position: absolute;
-  top: 340px;
-  left: 355px;
-  display: inline-block;
+  display: flex;
   cursor: pointer;
-  transition: 1s ease;
+}
+#share{
+    position: absolute;
+    top: 340px;
+    left: 355px;
+    opacity: 0;
+    transition: 1s ease;
 }
 .animate {
   top: 250px;
   left: 240px;
   width: 100%;
 }
-button:hover{
+#share:hover{
   animation: rotar 1s alternate;
+  opacity: 1;
+}
+.rotar{
+    animation: rotar 1s alternate;
 }
 @keyframes rotar{
     0%{transform: rotate(0deg);}
@@ -126,89 +140,104 @@ button:hover{
     min-width: 160px;
     bottom: 20px;
 }
+
+/*Informacion personal*/
+
 .contenido{
     display: grid;
-    grid-template-columns: auto auto;
-    min-height: 400px;
+    grid-template-columns: 25% auto;
+    height: 500px;
+    width: 100%;
 }
 .contact-info{
-    display: block;
-    width: 100%;
-    height: 100%;            
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    width: -moz-fit-content;
+    height: 100%;
+    align-items: center;
+    margin-left: 10px;
 }
 .pop{
-    background-color:#1B4782;
-    clip-path: circle(35px);
-    scale: 0.8;
-    transition: 0.5s linear;
+    position: relative;
+    clip-path: circle();
+    width: fit-content;
+    width: -moz-fit-content;
+    scale: 0.9;
+}
+#wha{
+    background-color: green;
+}
+#mail{
+    background-color: rgb(239, 0, 0);
+}
+.pop button{
+    padding: 10px;
+    justify-self: center;
+    align-self: center;
 }
 .pop:hover{
     background-color: #fff;
-    scale: 1;
 }
 .pop svg{
-    display: grid;
     width: 50px;
     height: 50px;
-    padding: 10px;
-    margin: 0px 15px;
-}
-.pop svg:hover{
-    animation: rotar linear 0.8s;
-    --pop-color: hsl(0, 0%, 0%);
-}
-.pop a{
-    width: 100%;
-    height: 100%;
 }
 .id{
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-start;
-    width: 300px;
     font-family: "Oswald";
-    letter-spacing: 0.2em;
-    color: #00A8CC;
+    font-size: 0.5em;
+    letter-spacing: 0.4em;
+    color: #1B4782;
     text-transform: uppercase;
 }
 .card h1 {
     margin: 0 10px;
     width: 100%;
-    font-size: 25px;
+    font-size: 0.4em;
+    font-size: 26px;
     text-align: start;
 }
 .card #profesion{
     width: 100%;
     margin: 0 10px;
-    font-size: small;
+    font-weight: 600;
+    font-size: 2em;
     text-align: start;
 }
+
+/*Seccion de tarjetas de informacion*/
+
 .extra-info{
+    position: relative;
     display: grid;
     overflow: hidden;
-    background-color:#00A8CC;
-    border-radius: 30px; 
-    grid-template-rows: 90px 90px;
-    justify-items: center;
+    background-color:#00A8CCBF;
+    border-radius: 30px;
+    grid-template-rows: auto auto;
     color: #fefefe;
-    font-family: "Oswald";  
+    font-family: "Oswald";
     text-transform: uppercase;
     letter-spacing: 0.2em;
-    font-size: 0.75em;
+    font-size: 0.8em;
     line-height: 2;
     font-weight: 600;
-    text-rendering: optimizeLegibility;    
+    text-rendering: optimizeLegibility;
     margin: 10px;
     width: 380px;
-    max-height: 180px;
-    height: 180px;
+    height: 200px;
     box-shadow: 0 5px 8px rgb(39, 54, 74);
+    align-content: center;
+    justify-items: center;
 }
 #info1{
     position: relative;
     color: #000;
     left: 30px;
+    bottom: 20%;
     width: 80%;
     font-weight: 600;
     text-align: justify;
@@ -225,20 +254,50 @@ button:hover{
     align-self: flex-start;
     justify-self: start;
 }
+.extra-info #muelita2{
+    position: absolute;
+    width: 40px;
+    height: 60px;
+    align-self: flex-start;
+    justify-self: start;
+    padding: 10px;
+}
 .extra-info p{
     display: flex;
     margin: 0 10px;
     align-items: center;
 }
-.direccion svg{
+.direccion{
+    position: relative;
     display: flex;
-    margin-top: 30px;
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 90px;
+    align-items: center;
+    bottom: 10px;
 }
-.extra-info a{
-    width: 100px;
-    height: 100px;
+.extra-info button{
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+#direccion{
+    display: flex;
+    height: auto;
+}
+.salto{
+    animation: salto 1000ms ease;
+}
+@keyframes salto{
+    0%,50%,100%{transform: translateY(-0px);}
+    25%,75%{transform: translateY(15px);}
+}
+.somba{
+    animation: sombra 1000ms ease;
+}
+@keyframes sombra{
+    0%,50%,100%{transform: scale(1);}
+    25%,75%{transform: (1.5);}
 }
 .foot{
     position: relative;
